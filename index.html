@@ -3,351 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Oficial de Física II: Ciencia en Movimiento</title>
-    <!-- Fuente moderna desde Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Física II - Compendio Académico</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
     <style>
-        /* Variables de diseño basadas en la guía oficial */
         :root {
-            --azul-electrico: #1a73e8;
-            --naranja-neon: #ff6d00;
-            --gris-claro: #f8f9fa;
-            --texto-oscuro: #202124;
-            --blanco: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            --primary-color: #0f2c59;
+            --secondary-color: #dadbdc;
+            --text-color: #2b2b2b;
+            --accent-color: #8c1d40;
+            --bg-color: #fafdff;
+            --card-bg: #ffffff;
         }
 
         body {
-            background-color: var(--gris-claro);
-            color: var(--texto-oscuro);
+            font-family: 'Times New Roman', Times, serif, sans-serif;
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
         }
 
-        /* Encabezado Principal */
         header {
-            background: linear-gradient(135deg, var(--azul-electrico), #0d47a1);
-            color: var(--blanco);
-            padding: 60px 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            border-bottom: 4px solid var(--accent-color);
         }
 
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .logo-area {
+            width: 150px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #ffffffb3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Contenedor Principal */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+        .header-text h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-family: 'Georgia', serif;
         }
 
-        /* Tarjetas de Contenido (Artículos) */
-        .card {
-            background: var(--blanco);
-            padding: 40px;
-            border-radius: 12px;
+        .header-text p {
+            margin: 0.5rem 0 0 0;
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        nav {
+            background-color: #0a1f3f;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .chapter {
+            background: var(--card-bg);
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            border-radius: 4px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border-left: 5px solid var(--azul-electrico);
+            border: 1px solid #eef2f5;
         }
 
         h2 {
-            color: var(--azul-electrico);
+            color: var(--primary-color);
+            font-family: 'Georgia', serif;
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
         }
 
         h3 {
-            color: var(--texto-oscuro);
-            margin: 25px 0 10px 0;
+            color: var(--accent-color);
+            font-family: 'Georgia', serif;
             font-size: 1.3rem;
+            margin-top: 1.5rem;
         }
 
         p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: #4a4a4a;
-        }
-
-        /* Cajas de destaque para fórmulas */
-        .formula-box {
-            background-color: var(--gris-claro);
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
+            text-align: justify;
             font-size: 1.1rem;
-            border-left: 4px solid var(--naranja-neon);
         }
 
-        /* Tablas Estilizadas */
-        table {
+        .equation {
+            background-color: #f7f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        .image-placeholder {
+            background-color: #eaeff2;
+            border: 1px solid #ccd5dc;
             width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 1rem;
+            max-width: 600px;
+            height: 300px;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #556370;
+            font-style: italic;
+            text-align: center;
+            padding: 1rem;
+            box-sizing: border-box;
         }
 
-        th {
-            background-color: var(--azul-electrico);
-            color: var(--blanco);
-            font-weight: 600;
-            padding: 12px;
-            text-align: left;
+        .image-placeholder span {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-style: normal;
         }
 
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
+        .forum-section {
+            background-color: #f0f4f8;
+            border-top: 4px solid var(--accent-color);
+            padding: 2.5rem;
+            margin-top: 4rem;
         }
 
-        tr:hover {
-            background-color: rgba(26, 115, 232, 0.05);
+        .forum-section h2 {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
         }
 
-        /* Sección de Módulos Abiertos (Futuros) */
-        .open-modules {
-            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-            border-left: 5px solid var(--naranja-neon);
+        .question-card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .open-modules ul {
-            list-style-type: none;
-            padding-left: 0;
+        .question-card p {
+            font-weight: bold;
+            margin-top: 0;
         }
 
-        .open-modules li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .open-modules li::before {
-            content: "💡";
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-
-        /* Zona Interactiva de Comentarios/Colaboración */
-        .collab-section {
-            background: var(--blanco);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        input[type="text"], textarea {
+        .comment-box {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            height: 80px;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccd5dc;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: sans-serif;
         }
 
-        input[type="text"]:focus, textarea:focus {
-            border-color: var(--azul-electrico);
-            outline: none;
-        }
-
-        button {
-            background-color: var(--naranja-neon);
-            color: var(--blanco);
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 6px;
+            padding: 0.6rem 1.2rem;
+            margin-top: 0.5rem;
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
+            border-radius: 4px;
+            font-weight: bold;
         }
 
-        button:hover {
-            background-color: #e65100;
-            transform: translateY(-2px);
-        }
-
-        /* Lista de aportes dinámicos */
-        .feedbacks {
-            margin-top: 30px;
-            border-top: 1px solid #e0e0e0;
-            padding-top: 20px;
-        }
-
-        .comment {
-            background: var(--gris-claro);
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--azul-electrico);
+        .btn-submit:hover {
+            background-color: var(--accent-color);
         }
 
         footer {
+            background-color: var(--primary-color);
+            color: white;
             text-align: center;
-            padding: 30px;
-            color: #70757a;
+            padding: 1.5rem;
+            margin-top: 4rem;
             font-size: 0.9rem;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .chapter {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado Oficial -->
     <header>
-        <h1>Blog Oficial de Física II: Ciencia en Movimiento</h1>
-        <p>Un espacio interactivo y colaborativo para explorar las leyes del universo</p>
+        <div class="header-container">
+            <div class="header-text">
+                <h1>Física II: Fundamentos Macroscópicos</h1>
+                <p>Un compendio teórico-práctico para el nivel universitario</p>
+            </div>
+            <div class="logo-area">
+                <img src=https://es.wikipedia.org/wiki/Universidad_Nacional_Tecnol%C3%B3gica_de_Lima_Sur alt="Logo Universidad" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+        </div>
     </header>
 
-    <div class="container">
+    <nav>
+        <div class="nav-container">
+            <a href="#elasticidad">Elasticidad</a>
+            <a href="#mas">M.A.S.</a>
+            <a href="#ondas">Ondas</a>
+            <a href="#cuestionario">Cuestionario</a>
+        </div>
+    </nav>
 
-        <!-- MÓDULO 1: CONTENIDO ACADÉMICO -->
-        <article class="card">
-            <h2>Módulo 1: Estática y Dinámica de Fluidos</h2>
+    <main>
+
+        <article id="elasticidad" class="chapter">
+            <h2>Capítulo 1: Elasticidad de los Materiales</h2>
+            <p>En el estudio de la mecánica de sólidos, la <strong>elasticidad</strong> es la propiedad mecánica que describe la capacidad de un cuerpo para sufrir deformaciones reversibles cuando se encuentra sujeto a la acción de fuerzas externas, recuperando su forma y dimensiones originales una vez que dichas cargas son retiradas.</p>
             
-            <h3>1.1 El Principio de Arquímedes y la Flotabilidad</h3>
-            <p>¿Por qué un enorme barco de acero de miles de toneladas flota perfectamente en el océano, mientras que una pequeña canica de metal se hunde hasta el fondo de inmediato? La respuesta se encuentra en el Principio de Arquímedes.</p>
-            <p>Cuando un cuerpo se sumerge total o parcialmente en un fluido en reposo, experimenta una fuerza vertical hacia arriba llamada <strong>fuerza de empuje (E)</strong>, la cual es igual al peso del volumen del fluido desalojado por el cuerpo.</p>
+            <h3>1.1 Esfuerzo y Deformación Unitaria</h3>
+            <p>Para cuantificar el comportamiento elástico, se definen dos magnitudes fundamentales: el esfuerzo ($\sigma$) y la deformación unitaria ($\epsilon$). El esfuerzo se define como la fuerza aplicada por unidad de área, mientras que la deformación unitaria representa el cambio fraccionario en las dimensiones del objeto.</p>
             
-            <!-- Caja de destaque de fórmula -->
-            <div class="formula-box">
-                E = ρ_fluido · g · V_sumergido
+            <div class="equation">
+                $$\sigma = \frac{F}{A} \quad \text{y} \quad \epsilon = \frac{\Delta L}{L_0}$$
             </div>
-            
-            <p><strong>Donde:</strong><br>
-            • E: Fuerza de empuje (en Newtons, N)<br>
-            • ρ_fluido: Densidad del fluido (en kg/m³)<br>
-            • g: Aceleración de la gravedad (~9.81 m/s²)<br>
-            • V_sumergido: Volumen del cuerpo bajo el fluido (en m³)</p>
-            
-            <p>El secreto de los barcos radica en su diseño geométrico. Al ser huecos y contener grandes volúmenes de aire, la densidad promedio del barco es mucho menor que la del agua del mar. Esto permite que el volumen de agua desplazada sea lo suficientemente grande como para generar un empuje igual o superior al peso total de la embarcación y su carga.</p>
 
-            <h3>1.2 Comportamiento de Materiales según su Densidad</h3>
-            <p>Análisis comparativo de cómo interactúan diferentes materiales al ser introducidos en agua pura (densidad aproximada de 1000 kg/m³):</p>
+            <h3>1.2 Ley de Hooke Generalizada y Módulo de Young</h3>
+            <p>Dentro del límite elástico de un material, existe una relación de linealidad directa entre el esfuerzo aplicado y la deformación resultante. Esta relación se conoce como la Ley de Hooke. Para una deformación por tracción o compresión unidimensional, la constante de proporcionalidad es el <strong>Módulo de Young</strong> ($Y$ o $E$):</p>
             
-            <!-- Tabla Estilizada -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Material</th>
-                        <th>Densidad (kg/m³)</th>
-                        <th>Condición (E vs Peso)</th>
-                        <th>Comportamiento Visual</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Madera de Pino</strong></td>
-                        <td>~600</td>
-                        <td>Empuje > Peso (inicialmente)</td>
-                        <td>Flota con una parte sobresaliendo de la superficie.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Hielo</strong></td>
-                        <td>917</td>
-                        <td>Empuje ≈ Peso</td>
-                        <td>Flota sumergido casi en su totalidad (92% bajo el agua).</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Acero Sólido</strong></td>
-                        <td>7850</td>
-                        <td>Empuje < Peso</td>
-                        <td>Se hunde rápidamente hasta el fondo del recipiente.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="equation">
+                $$\sigma = Y \cdot \epsilon \implies \frac{F}{A} = Y \left(\frac{\Delta L}{L_0}\right)$$
+            </div>
+
+            <div class="image-placeholder">
+                <span>[Imagen 1.1: Diagrama de Esfuerzo vs. Deformación]</span>
+                Gráfica académica que ilustra el límite elástico, la región de proporcionalidad lineal (Ley de Hooke), el punto de fluencia y la zona de ruptura del material.
+            </div>
+
+            <h3>1.3 Módulos de Rigidez de Corte y Volumétrico</h3>
+            <p>Cuando las fuerzas aplicadas son tangenciales a las superficies del sólido, se produce un esfuerzo de corte, gobernado por el Módulo de Corte ($G$). Por otro lado, si un cuerpo se somete a una presión hidrostática uniforme $\Delta P$, experimenta una deformación en todo su volumen, fenómeno regulado por el Módulo Volumétrico ($B$):</p>
+            
+            <div class="equation">
+                $$\Delta P = -B \left(\frac{\Delta V}{V_0}\right)$$
+            </div>
+            <p>El signo negativo indica que un incremento de la presión externa produce invariablemente una reducción del volumen original del cuerpo.</p>
         </article>
 
-        <!-- SECCIÓN ABIERTA (SIN FINAL) -->
-        <section class="card open-modules">
-            <h2>Módulos Abiertos para Expansión (Próximamente)</h2>
-            <p>Este blog es un proyecto en constante evolución. Las siguientes secciones están preparadas para ser desarrolladas de forma colaborativa por la comunidad académica:</p>
-            <ul>
-                <li><strong>Módulo 2: Termodinámica y Leyes de los Gases.</strong> Espacio asignado para explicar el funcionamiento de los motores térmicos, la entropía y las transferencias de calor mediante infografías dinámicas.</li>
-                <li><strong>Módulo 3: Movimiento Ondulatorio y Acústica.</strong> Sección destinada al análisis de las ondas sonoras, el efecto Doppler y las propiedades ópticas de la luz.</li>
-                <li><strong>Sección de Laboratorio Virtual:</strong> Espacio abierto para incrustar códigos de simuladores interactivos PhET que permitan experimentar con variables en tiempo real.</li>
-            </ul>
-        </section>
+        <article id="mas" class="chapter">
+            <h2>Capítulo 2: Movimiento Armónico Simple (M.A.S.)</h2>
+            <p>El <strong>Movimiento Armónico Simple</strong> es un modelo cinemático y dinámico idealizado que describe a un sistema periódico oscilatorio en ausencia de fuerzas de fricción o disipativas. Este movimiento es originado por una fuerza restauradora lineal, la cual es directamente proporcional al desplazamiento del sistema respecto a su posición de equilibrio hidrostático o mecánico.</p>
 
-        <!-- ZONA INTERACTIVA DE COLABORACIÓN -->
-        <section class="collab-section">
-            <h2>💬 Espacio de Retroalimentación y Colaboración</h2>
-            <p>¿Tienes un experimento casero, un apunte o una simulación digital que demuestre estos principios? Envía tu propuesta para agregar tu contenido a este espacio oficial.</p>
+            <h3>2.1 Ecuación Diferencial del Movimiento</h3>
+            <p>A partir de la segunda ley de Newton y la ley de Hooke para un sistema masa-resorte, se establece la ecuación diferencial lineal de segundo orden que gobierna el M.A.S.:</p>
             
-            <form id="collabForm">
-                <div class="form-group">
-                    <label for="autor">Tu Nombre / Grupo:</label>
-                    <input type="text" id="autor" required placeholder="Ej. Juan Pérez - Equipo 3">
-                </div>
-                <div class="form-group">
-                    <label for="propuesta">Propuesta de Tema o Experimento:</label>
-                    <textarea id="propuesta" rows="4" required placeholder="Describe brevemente qué tema o experimento te gustaría añadir al blog..."></textarea>
-                </div>
-                <button type="submit">Enviar Propuesta Oficial</button>
-            </form>
+            <div class="equation">
+                $$m\frac{d^2x}{dt^2} + kx = 0 \implies \frac{d^2x}{dt^2} + \omega^2 x = 0$$
+            </div>
+            
+            <p>Donde $\omega$ representa la frecuencia angular del sistema, definida formalmente como:</p>
+            
+            <div class="equation">
+                $$\omega = \sqrt{\frac{k}{m}}$$
+            </div>
 
-            <div class="feedbacks" id="feedbacksContainer">
-                <h3>Ideas de la comunidad en revisión:</h3>
-                <div class="comment">
-                    <strong>Prof. Carlos Mendoza:</strong> "Excelente iniciativa. Propongo agregar un laboratorio virtual de PhET sobre la Ley de Pascal en el Módulo 1."
-                </div>
+            <div class="image-placeholder">
+                <span>[Imagen 2.1: Sistema Masa-Resorte y Proyección Circular]</span>
+                Esquema dinámico que muestra la oscilación de una masa unida a un resorte helicoidal, junto con la correspondencia geométrica del movimiento armónico como la proyección de un Movimiento Circular Uniforme (MCU).
+            </div>
+
+            <h3>2.2 Ecuaciones de Posición, Velocidad y Aceleración</h3>
+            <p>La solución general de la ecuación diferencial del M.A.S. describe la posición $x(t)$ de la partícula en función del tiempo, donde $A$ es la amplitud máxima y $\phi$ la fase inicial determinada por las condiciones de contorno:</p>
+            
+            <div class="equation">
+                $$x(t) = A \cos(\omega t + \phi)$$
+                $$v(t) = \frac{dx}{dt} = -A\omega \sin(\omega t + \phi)$$
+                $$a(t) = \frac{dv}{dt} = -A\omega^2 \cos(\omega t + \phi) = -\omega^2 x(t)$$
+            </div>
+
+            <h3>2.3 Conservación de la Energía en el M.A.S.</h3>
+            <p>En un sistema armónico ideal, la energía mecánica total ($E$) permanece constante a lo largo del tiempo, transformándose continuamente de energía cinética ($K$) a energía potencial elástica ($U$):</p>
+            
+            <div class="equation">
+                $$E = K + U = \frac{1}{2}mv^2 + \frac{1}{2}kx^2 = \frac{1}{2}kA^2$$
+            </div>
+        </article>
+
+        <article id="ondas" class="chapter">
+            <h2>Capítulo 3: Cinemática y Dinámica de Ondas</h2>
+            <p>Una <strong>onda</strong> se define como la propagación de una perturbación espacio-temporal a través de un medio material (ondas mecánicas) o del vacío (ondas electromagnéticas). El aspecto fundamental del movimiento ondulatorio es que genera transporte de energía y cantidad de movimiento sin que exista transferencia neta de materia.</p>
+
+            <h3>3.1 Clasificación de las Ondas</h3>
+            <p>Las ondas pueden clasificarse bajo distintos criterios vectoriales:</p>
+            <ul>
+                <li><strong>Ondas Transversales:</strong> Las partículas del medio oscilan perpendicularmente a la dirección de propagación de la onda (ej. ondas en una cuerda).</li>
+                <li><strong>Ondas Longitudinales:</strong> Las partículas del medio oscilan en la misma dirección en la que se propaga la perturbación (ej. ondas sonoras).</li>
+            </ul>
+
+            <h3>3.2 La Función de Onda Viajera</h3>
+            <p>Matemáticamente, una onda armónica unidimensional que se propaga hacia la dirección positiva del eje $x$ se modela mediante la siguiente función de onda:</p>
+            
+            <div class="equation">
+                $$y(x,t) = A \sin(kx - \omega t + \phi)$$
+            </div>
+            
+            <p>Donde introducemos el parámetro del número de onda espacial ($k$) y la relación con la longitud de onda ($\lambda$):</p>
+            
+            <div class="equation">
+                $$k = \frac{2\pi}{\lambda} \quad \text{y} \quad \omega = 2\pi f = \frac{2\pi}{T}$$
+            </div>
+
+            <div class="image-placeholder">
+                <span>[Imagen 3.1: Parámetros Espaciales y Temporales de una Onda Sinusoidal]</span>
+                Representación gráfica de una onda armónica transitoria, identificando visualmente los nodos, antinodes, crestas, valles, la longitud de onda ($\lambda$) y la amplitud ($A$).
+            </div>
+
+            <h3>3.3 Velocidad de Propagación</h3>
+            <p>La velocidad con la que se desplaza el perfil de la onda (velocidad de fase) depende intrínsecamente de las propiedades mecánicas e inerciales del medio. Para una onda transitoria en una cuerda ideal bajo una tensión $T$ y con densidad lineal de masa $\mu$, la velocidad está dada por:</p>
+            
+            <div class="equation">
+                $$v = \lambda \cdot f = \frac{\omega}{k} = \sqrt{\frac{T}{\mu}}$$
+            </div>
+        </article>
+
+        <section id="cuestionario" class="forum-section">
+            <h2>Panel de Discusión y Evaluación Académica</h2>
+            <p>A continuación se plantean interrogantes analíticas basadas en el compendio de lecturas anterior. Use la sección de comentarios integrada para enviar sus respuestas y debatir con sus pares académicos.</p>
+
+            <div class="question-card">
+                <p>Pregunta 1 (Elasticidad):</p>
+                <label>Si un cable de acero se corta exactamente a la mitad de su longitud original, ¿qué ocurre con el valor de su Módulo de Young y qué ocurre con su constante elástica de rigidez $k$? Justifique su respuesta desde la escala macroscópica y microscópica.</label>
+                <textarea class="comment-box" placeholder="Escriba su análisis formal aquí..."></textarea>
+                <button class="btn-submit" onclick="alert('Respuesta enviada al servidor académico simulado.')">Enviar Respuesta</button>
+            </div>
+
+            <div class="question-card">
+                <p>Pregunta 2 (Movimiento Armónico Simple):</p>
+                <label>En un oscilador armónico real masa-resorte, ¿en qué posición de la trayectoria la magnitud de la aceleración alcanza su valor crítico máximo y en qué punto la energía cinética iguala exactamente a la energía potencial elástica?</label>
+                <textarea class="comment-box" placeholder="Escriba su análisis formal aquí..."></textarea>
+                <button class="btn-submit" onclick="alert('Respuesta enviada al servidor académico simulado.')">Enviar Respuesta</button>
+            </div>
+
+            <div class="question-card">
+                <p>Pregunta 3 (Ondas):</p>
+                <label>Explique detalladamente la diferencia mecánica entre la velocidad de fase de una onda mecánica viajera ($v$) y la velocidad transversal instantánea ($v_y$) de una partícula individual perteneciente al medio de propagación.</label>
+                <textarea class="comment-box" placeholder="Escriba su análisis formal aquí..."></textarea>
+                <button class="btn-submit" onclick="alert('Respuesta enviada al servidor académico simulado.')">Enviar Respuesta</button>
             </div>
         </section>
 
-    </div>
+    </main>
 
     <footer>
-        <p>© 2026 Blog Oficial de Física II - Plataforma de Divulgación Académica Abierta</p>
+        <p>&copy; 2026 Cátedra de Física Universitaria II. Reservados todos los derechos teóricos.</p>
     </footer>
 
-    <!-- Lógica de Javascript para la interactividad en tiempo real -->
-    <script>
-        document.getElementById('collabForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const autor = document.getElementById('autor').value;
-            const propuesta = document.getElementById('propuesta').value;
-            const container = document.getElementById('feedbacksContainer');
-            
-            // Crear nuevo elemento de comentario de forma dinámica
-            const nuevoComentario = document.createElement('div');
-            nuevoComentario.className = 'comment';
-            nuevoComentario.innerHTML = `<strong>${autor}:</strong> "${propuesta}"`;
-            
-            // Insertar la propuesta arriba en la lista
-            container.insertBefore(nuevoComentario, container.children[1]);
-            
-            // Limpiar formulario
-            document.getElementById('collabForm').reset();
-            alert('¡Tu propuesta ha sido enviada con éxito! Se revisará para expandir el blog.');
-        });
-    </script>
 </body>
 </html>
