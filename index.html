@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oficial de Física II: Ciencia en Movimiento</title>
+    <!-- Fuente moderna desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables de diseño basadas en la guía oficial */
+        :root {
+            --azul-electrico: #1a73e8;
+            --naranja-neon: #ff6d00;
+            --gris-claro: #f8f9fa;
+            --texto-oscuro: #202124;
+            --blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-claro);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        /* Encabezado Principal */
+        header {
+            background: linear-gradient(135deg, var(--azul-electrico), #0d47a1);
+            color: var(--blanco);
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Tarjetas de Contenido (Artículos) */
+        .card {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--azul-electrico);
+        }
+
+        h2 {
+            color: var(--azul-electrico);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--texto-oscuro);
+            margin: 25px 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #4a4a4a;
+        }
+
+        /* Cajas de destaque para fórmulas */
+        .formula-box {
+            background-color: var(--gris-claro);
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-left: 4px solid var(--naranja-neon);
+        }
+
+        /* Tablas Estilizadas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: var(--azul-electrico);
+            color: var(--blanco);
+            font-weight: 600;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background-color: rgba(26, 115, 232, 0.05);
+        }
+
+        /* Sección de Módulos Abiertos (Futuros) */
+        .open-modules {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-left: 5px solid var(--naranja-neon);
+        }
+
+        .open-modules ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .open-modules li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .open-modules li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Zona Interactiva de Comentarios/Colaboración */
+        .collab-section {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: var(--azul-electrico);
+            outline: none;
+        }
+
+        button {
+            background-color: var(--naranja-neon);
+            color: var(--blanco);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #e65100;
+            transform: translateY(-2px);
+        }
+
+        /* Lista de aportes dinámicos */
+        .feedbacks {
+            margin-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+
+        .comment {
+            background: var(--gris-claro);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--azul-electrico);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #70757a;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado Oficial -->
+    <header>
+        <h1>Blog Oficial de Física II: Ciencia en Movimiento</h1>
+        <p>Un espacio interactivo y colaborativo para explorar las leyes del universo</p>
+    </header>
+
+    <div class="container">
+
+        <!-- MÓDULO 1: CONTENIDO ACADÉMICO -->
+        <article class="card">
+            <h2>Módulo 1: Estática y Dinámica de Fluidos</h2>
+            
+            <h3>1.1 El Principio de Arquímedes y la Flotabilidad</h3>
+            <p>¿Por qué un enorme barco de acero de miles de toneladas flota perfectamente en el océano, mientras que una pequeña canica de metal se hunde hasta el fondo de inmediato? La respuesta se encuentra en el Principio de Arquímedes.</p>
+            <p>Cuando un cuerpo se sumerge total o parcialmente en un fluido en reposo, experimenta una fuerza vertical hacia arriba llamada <strong>fuerza de empuje (E)</strong>, la cual es igual al peso del volumen del fluido desalojado por el cuerpo.</p>
+            
+            <!-- Caja de destaque de fórmula -->
+            <div class="formula-box">
+                E = ρ_fluido · g · V_sumergido
+            </div>
+            
+            <p><strong>Donde:</strong><br>
+            • E: Fuerza de empuje (en Newtons, N)<br>
+            • ρ_fluido: Densidad del fluido (en kg/m³)<br>
+            • g: Aceleración de la gravedad (~9.81 m/s²)<br>
+            • V_sumergido: Volumen del cuerpo bajo el fluido (en m³)</p>
+            
+            <p>El secreto de los barcos radica en su diseño geométrico. Al ser huecos y contener grandes volúmenes de aire, la densidad promedio del barco es mucho menor que la del agua del mar. Esto permite que el volumen de agua desplazada sea lo suficientemente grande como para generar un empuje igual o superior al peso total de la embarcación y su carga.</p>
+
+            <h3>1.2 Comportamiento de Materiales según su Densidad</h3>
+            <p>Análisis comparativo de cómo interactúan diferentes materiales al ser introducidos en agua pura (densidad aproximada de 1000 kg/m³):</p>
+            
+            <!-- Tabla Estilizada -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Densidad (kg/m³)</th>
+                        <th>Condición (E vs Peso)</th>
+                        <th>Comportamiento Visual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Madera de Pino</strong></td>
+                        <td>~600</td>
+                        <td>Empuje > Peso (inicialmente)</td>
+                        <td>Flota con una parte sobresaliendo de la superficie.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hielo</strong></td>
+                        <td>917</td>
+                        <td>Empuje ≈ Peso</td>
+                        <td>Flota sumergido casi en su totalidad (92% bajo el agua).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acero Sólido</strong></td>
+                        <td>7850</td>
+                        <td>Empuje < Peso</td>
+                        <td>Se hunde rápidamente hasta el fondo del recipiente.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <!-- SECCIÓN ABIERTA (SIN FINAL) -->
+        <section class="card open-modules">
+            <h2>Módulos Abiertos para Expansión (Próximamente)</h2>
+            <p>Este blog es un proyecto en constante evolución. Las siguientes secciones están preparadas para ser desarrolladas de forma colaborativa por la comunidad académica:</p>
+            <ul>
+                <li><strong>Módulo 2: Termodinámica y Leyes de los Gases.</strong> Espacio asignado para explicar el funcionamiento de los motores térmicos, la entropía y las transferencias de calor mediante infografías dinámicas.</li>
+                <li><strong>Módulo 3: Movimiento Ondulatorio y Acústica.</strong> Sección destinada al análisis de las ondas sonoras, el efecto Doppler y las propiedades ópticas de la luz.</li>
+                <li><strong>Sección de Laboratorio Virtual:</strong> Espacio abierto para incrustar códigos de simuladores interactivos PhET que permitan experimentar con variables en tiempo real.</li>
+            </ul>
+        </section>
+
+        <!-- ZONA INTERACTIVA DE COLABORACIÓN -->
+        <section class="collab-section">
+            <h2>💬 Espacio de Retroalimentación y Colaboración</h2>
+            <p>¿Tienes un experimento casero, un apunte o una simulación digital que demuestre estos principios? Envía tu propuesta para agregar tu contenido a este espacio oficial.</p>
+            
+            <form id="collabForm">
+                <div class="form-group">
+                    <label for="autor">Tu Nombre / Grupo:</label>
+                    <input type="text" id="autor" required placeholder="Ej. Juan Pérez - Equipo 3">
+                </div>
+                <div class="form-group">
+                    <label for="propuesta">Propuesta de Tema o Experimento:</label>
+                    <textarea id="propuesta" rows="4" required placeholder="Describe brevemente qué tema o experimento te gustaría añadir al blog..."></textarea>
+                </div>
+                <button type="submit">Enviar Propuesta Oficial</button>
+            </form>
+
+            <div class="feedbacks" id="feedbacksContainer">
+                <h3>Ideas de la comunidad en revisión:</h3>
+                <div class="comment">
+                    <strong>Prof. Carlos Mendoza:</strong> "Excelente iniciativa. Propongo agregar un laboratorio virtual de PhET sobre la Ley de Pascal en el Módulo 1."
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Blog Oficial de Física II - Plataforma de Divulgación Académica Abierta</p>
+    </footer>
+
+    <!-- Lógica de Javascript para la interactividad en tiempo real -->
+    <script>
+        document.getElementById('collabForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const autor = document.getElementById('autor').value;
+            const propuesta = document.getElementById('propuesta').value;
+            const container = document.getElementById('feedbacksContainer');
+            
+            // Crear nuevo elemento de comentario de forma dinámica
+            const nuevoComentario = document.createElement('div');
+            nuevoComentario.className = 'comment';
+            nuevoComentario.innerHTML = `<strong>${autor}:</strong> "${propuesta}"`;
+            
+            // Insertar la propuesta arriba en la lista
+            container.insertBefore(nuevoComentario, container.children[1]);
+            
+            // Limpiar formulario
+            document.getElementById('collabForm').reset();
+            alert('¡Tu propuesta ha sido enviada con éxito! Se revisará para expandir el blog.');
+        });
+    </script>
+</body>
+</html>
